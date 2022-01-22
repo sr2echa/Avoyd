@@ -8,33 +8,6 @@ tki = tk.Tk()
 #tutorialllllllllll https://realpython.com/python-gui-tkinter/
 tki.title("Avoyd!")
 tki.geometry("350x350")
-#_____________________________________________________#
-tester = False
-name = False
-askDriverName = 'e'
-askDriverButton = 'e'
-askDriverText = 'e'
-#askgin for virtual camera driver name
-if not tester:
-  askDriverName = tk.Entry(fg="yellow", bg="blue", width=25)
-  #textbox
-    #label/labels
-  askDriverText = tk.Label(text = "Enter Virtual camera Driver Name")
-  #"enter" button
-  askDriverButton = tk.Button(
-		text="enter",
-		bg='grey',
-    height=1,
-	)
-  def whatever():
-    name = askDriverName.get()
-    print(name)
-  def event(bleh):
-    whatever()
-  askDriverButton.bind("<ButtonRelease-1>", event)
-
-  #________________________________________________#
-  #GET THE NAME
 #random buffer button
 button = tk.Button(
     text="A random buffer happens!",
@@ -56,8 +29,44 @@ button2 = tk.Button(
 )
 def eventHappen2(bleh):
 	manualBuffer()
-	#replace this with whatever YOU want!!!!!!!
 button2.bind("<ButtonRelease-1>", eventHappen2)
+
+#_____________________________________________________#
+tester = False
+name = False
+askDriverName = 'e'
+askDriverButton = 'e'
+askDriverText = 'e'
+#askgin for virtual camera driver name
+def thisSucks():
+	if not tester:
+		askDriverName = tk.Entry(fg="yellow", bg="blue", width=25)
+  	#textbox
+    	#label/labels
+		askDriverText = tk.Label(text = "Enter Virtual camera Driver Name")
+  	#"enter" button
+		askDriverButton = tk.Button(
+			text="enter",
+			bg='grey',
+    	height=1,
+		)
+		def whatever():
+			name = askDriverName.get()
+			print(name)
+			tester = True
+			thisSucks()
+
+		def event(bleh):
+			whatever()
+			askDriverButton.bind("<ButtonRelease-1>", event)
+	else:
+		button.pack()
+		button2.pack()
+		askDriverButton.pack_forget()
+		askDriverName.pack_forget()
+		askDriverText.pack_forget()
+  #________________________________________________#
+  #GET THE NAME
 
 # Set the position of button to coordinate (100, 20)
 askDriverButton.pack()
