@@ -10,66 +10,67 @@ tki.title("Avoyd!")
 tki.geometry("350x350")
 #random buffer button
 button = tk.Button(
-    text="A random buffer happens!",
-    width=25,
-    height=5,
-    bg="blue",
-    fg="yellow",
+		text="A random buffer happens!",
+		width=25,
+		height=5,
+		bg="blue",
+		fg="yellow",
 )
 def eventHappen(bleh):
 	randomBuffer()
-button.bind("<ButtonRelease-1>", eventHappen)
+button.bind("<ButtonRelease-1>", lambda event:eventHappen)
 #manual buffer button
 button2 = tk.Button(
-    text="manual buffer!",
-    width=25,
-    height=5,
-    bg="red",
-    fg="green",
+		text="manual buffer!",
+		width=25,
+		height=5,
+		bg="red",
+		fg="green",
 )
 def eventHappen2(bleh):
 	manualBuffer()
-button2.bind("<ButtonRelease-1>", eventHappen2)
+button2.bind("<ButtonRelease-1>", lambda event:eventHappen2)
 
 #_____________________________________________________#
 tester = False
 name = False
-askDriverName = 'e'
-askDriverButton = 'e'
-askDriverText = 'e'
+askDriverName = tk.Entry(fg="yellow", bg="blue", width=25)
+askDriverButton = tk.Button(
+			text="enter",
+			bg='grey',
+			height=1,
+		)
+askDriverText = tk.Label(text = "Enter Virtual camera Driver Name")
+def iWantToDie():
+	button.pack()
+	button2.pack()
+	askDriverButton.pack_forget()
+	askDriverName.pack_forget()
+	askDriverText.pack_forget()
 #askgin for virtual camera driver name
 def thisSucks():
-	if not tester:
+	if tester == False:
 		askDriverName = tk.Entry(fg="yellow", bg="blue", width=25)
-  	#textbox
-    	#label/labels
+		#textbox
+		#label/labels
 		askDriverText = tk.Label(text = "Enter Virtual camera Driver Name")
-  	#"enter" button
+		#"enter" button
 		askDriverButton = tk.Button(
 			text="enter",
 			bg='grey',
-    	height=1,
+			height=1,
 		)
-		def whatever():
+		def event(bleh):
 			name = askDriverName.get()
 			print(name)
-			tester = True
-			thisSucks()
+			print("??????????????????????")
+			iWantToDie()
+		askDriverButton.bind("<ButtonRelease-1>", lambda event:event())
 
-		def event(bleh):
-			whatever()
-			askDriverButton.bind("<ButtonRelease-1>", event)
-	else:
-		button.pack()
-		button2.pack()
-		askDriverButton.pack_forget()
-		askDriverName.pack_forget()
-		askDriverText.pack_forget()
+thisSucks()
   #________________________________________________#
   #GET THE NAME
-
 # Set the position of button to coordinate (100, 20)
-askDriverButton.pack()
 askDriverButton.place(x=150, y=170)
 askDriverName.place(x=65, y=130)
 askDriverText.pack()
